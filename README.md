@@ -60,8 +60,8 @@ Install [Docker](https://docs.docker.com/engine/install/ubuntu/), [act](https://
 $ git clone --recurse-submodules https://github.com/andre-wojtowicz/regexlearn-scorm.git
 $ cd regexlearn-scorm
 $ act -r -j build
-$ docker cp act-Build-and-release-build:$(pwd)/dist .
-$ docker container rm act-Build-and-release-build -f
+$ docker cp $(docker ps | grep -o "act-Build-and-release-build.*"):$(pwd)/dist .
+$ docker container rm $(docker ps | grep -o "act-Build-and-release-build.*") -f
 $ ls dist/*.zip
 ```
 
