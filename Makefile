@@ -30,9 +30,9 @@ scorm:
 	mkdir dist
 	cp -r imsmanifest.xml materials dist
 	sed -i "s/Last edit: .../Last edit: $(shell date '+%Y-%m-%d %H:%M')/" dist/imsmanifest.xml
-	cd regexlearn.com/out/ && cp -r _next 404 css images favicon.svg logo.svg interactively.webp ../../dist/materials
+	cd regexlearn.com/out/ && cp -r _next 404 css images favicon.svg logo.svg interactively.webp Practise\ Starter.webp Learn.webp ../../dist/materials
 	cd regexlearn.com/out/ && cp pl/learn/regex101/index.html ../../dist/materials/regex101.html
-	#cp update-paths.sh dist/materials && cd dist/materials && bash update-paths.sh && rm update-paths.sh
+	cd dist/materials && sed -i -e 's~</head>~<script src="js/scorm.js" type="text/javascript"></script></head>~' -e 's~<body>~<body onload="ScormProcessInitialize();" onbeforeunload="ScormProcessTerminate();" onunload="ScormProcessTerminate();">~' regex101.html
 	cd dist && \
 	zip "regexlearn-scorm-$(shell date '+%Y_%m_%d-%H_%M').zip" -r .
 	@echo ------------------------------------------

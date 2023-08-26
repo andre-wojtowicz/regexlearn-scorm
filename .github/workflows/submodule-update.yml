@@ -1,8 +1,8 @@
 name: Submodule update
 
 on:
-  schedule:
-    - cron: '0 6 * * MON'
+  #schedule:
+  #  - cron: '0 6 * * MON'
     
   workflow_dispatch:
 

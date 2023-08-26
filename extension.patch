@@ -105,6 +105,20 @@ index 0c638b4..c425fc7 100644
  );
  
  export default Logo;
+diff --git a/src/context/InteractiveAreaContext.tsx b/src/context/InteractiveAreaContext.tsx
+index f1f2d1b..3107b2b 100644
+--- a/src/context/InteractiveAreaContext.tsx
++++ b/src/context/InteractiveAreaContext.tsx
+@@ -63,6 +63,9 @@ const InteractiveAreaProvider = ({ lesson, lessonData, children }) => {
+     setStep(currentStep);
+     setLastStep(lastStep);
+     setSuccess(currentStep < lastStep || data.readOnly || data.interactive === false);
++
++    const lsevent = new Event('lsupdated');
++    document.dispatchEvent(lsevent);
+   }, [lookieKey, data]);
+ 
+   const updateStorage = currentStep => {
 diff --git a/src/data/lessons/index.json b/src/data/lessons/index.json
 index c688a81..7ac36f8 100644
 --- a/src/data/lessons/index.json
@@ -130,6 +144,55 @@ index c688a81..7ac36f8 100644
 -    "videoCount": 9
    }
  ]
+diff --git a/src/data/lessons/regex101.js b/src/data/lessons/regex101.js
+index d2943e7..78d8472 100644
+--- a/src/data/lessons/regex101.js
++++ b/src/data/lessons/regex101.js
+@@ -99,7 +99,7 @@ const regex101 = [
+   {
+     title: 'examples.starter.title',
+     description: 'examples.starter.description',
+-    image: '/Practise Starter.webp',
++    image: './Practise Starter.webp',
+     interactive: false,
+   },
+   {
+@@ -172,7 +172,7 @@ const regex101 = [
+   {
+     title: 'examples.finish.title',
+     description: 'examples.finish.description',
+-    image: '/Practise Starter.webp',
++    image: './Practise Starter.webp',
+     interactive: false,
+   },
+   {
+@@ -256,7 +256,7 @@ const regex101 = [
+   {
+     title: 'examples.starter.title',
+     description: 'examples.starter.description',
+-    image: '/Practise Starter.webp',
++    image: './Practise Starter.webp',
+     interactive: false,
+   },
+   {
+@@ -328,7 +328,7 @@ const regex101 = [
+   {
+     title: 'examples.finish.title',
+     description: 'examples.finish.description',
+-    image: '/Practise Starter.webp',
++    image: './Practise Starter.webp',
+     interactive: false,
+   },
+   {
+@@ -601,7 +601,7 @@ const regex101 = [
+   {
+     title: 'steps.completeAllSteps.title',
+     description: 'steps.completeAllSteps.description',
+-    image: '/Learn.webp',
++    image: './Learn.webp',
+     interactive: false,
+   },
+ ];
 diff --git a/src/localization/index.ts b/src/localization/index.ts
 index c35de6a..ca04170 100644
 --- a/src/localization/index.ts
