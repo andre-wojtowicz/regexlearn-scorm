@@ -13,7 +13,6 @@ site:
 	#git apply --whitespace=nowarn ../extension.patch && \
 	yarn install && \
 	yarn run build && \
-	yarn run html-lang-fixer && \
 	yarn run export
 	@echo \* ...done
 
@@ -22,7 +21,6 @@ rebuild-site:
 	export PATH=$$HOME/.yarn/bin:$$HOME/.config/yarn/global/node_modules/.bin:$$PATH && \
 	cd regexlearn.com && \
 	yarn run build && \
-	yarn run html-lang-fixer && \
 	yarn run export
 	@echo \* ...done
 
@@ -32,8 +30,9 @@ scorm:
 	mkdir dist
 	cp -r imsmanifest.xml materials dist
 	sed -i "s/Last edit: .../Last edit: $(shell date '+%Y-%m-%d %H:%M')/" dist/imsmanifest.xml
-	cp -r regexlearn.com/out/* dist/materials
-	cp update-paths.sh dist/materials && cd dist/materials && bash update-paths.sh && rm update-paths.sh
+	cd regexlearn.com/out/ && cp -r _next 404 css images favicon.svg logo.svg interactively.webp ../../dist/materials
+	cd regexlearn.com/out/ && cp pl/learn/regex101/index.html ../../dist/materials/regex101.html
+	#cp update-paths.sh dist/materials && cd dist/materials && bash update-paths.sh && rm update-paths.sh
 	cd dist && \
 	zip "regexlearn-scorm-$(shell date '+%Y_%m_%d-%H_%M').zip" -r .
 	@echo ------------------------------------------

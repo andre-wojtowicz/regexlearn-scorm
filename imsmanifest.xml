@@ -28,8 +28,8 @@
 		</organization>
 	</organizations>
 	<resources>
-		<resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="materials/index.html">
-            <file href="materials/index.html"/>
+		<resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="materials/regex101.html">
+            <file href="materials/regex101.html"/>
 		</resource>
 	</resources>
 </manifest>
