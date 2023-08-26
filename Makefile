@@ -10,7 +10,7 @@ site:
 	@echo \* Preparing regexlearn.com website files...
 	export PATH=$$HOME/.yarn/bin:$$HOME/.config/yarn/global/node_modules/.bin:$$PATH && \
 	cd regexlearn.com && \
-	#git apply --whitespace=nowarn ../extension.patch && \
+	git apply --whitespace=nowarn ../extension.patch && \
 	yarn install && \
 	yarn run build && \
 	yarn run export
